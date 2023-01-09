@@ -29,7 +29,7 @@ class Game:
         while True:
             self.window.screen.update()
             self.keyboardlistener()
-            self.snake.move()
+            self.snake.update()
 
 
             self.food.update()
@@ -45,6 +45,7 @@ class Game:
         if self.snake.snake_head.distance(self.food.item) < 15:
 
             self.food.set_move(True)
+            self.snake.grow()
 
 
             
