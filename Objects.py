@@ -87,6 +87,21 @@ class Snake:
     def update(self):
         self.move()
 
+    def snake_die(self):
+        self.snake_head.goto(0, 0)
+        self.snake_head.direction='stop'
+        
+        for part in self.snake_body:
+            part.hideturtle()
+
+        self.snake_body=[]
+
+    def head_and_body_coll_check(self):
+        for part in self.snake_body:
+            if part.distance(self.snake_head) < 20:
+                print ('head and body collision')
+                return True
+
 
         
         
@@ -136,7 +151,8 @@ class Food:
     def update(self):
         self.relocate()
         
-
+        if self.snake_head.direction = 'up':
+            
             y = self.snake_head.ycor()
 
             self.snake_head.sety(y+20)
