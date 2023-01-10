@@ -1,17 +1,15 @@
 import turtle
 
 
-image = 'apple.gif'
 
 class Window:
     def __init__(self, width, height):
         self.screen = turtle.Screen()
         self.screen.title('OOP Snake')
-        self.screen.bgcolor('blue')
+        self.screen.bgcolor((0.5, 0, 0.5))
         self.screen.setup(width, height)
         self.screen.tracer(0)
 
-        self.screen.addshape(image)
 
         self.hud = turtle.Turtle()
 
@@ -23,6 +21,6 @@ class Window:
         self.hud.hideturtle()
         self.hud.goto(0,-400)
 
-        self.hud.write('Score: %d High Score: 0' %(score), align = 'center', font=(
+        self.hud.write('Score: %d High Score: 0' %(score), align = 'center', font=('Courier', 22, 'normal'))
 
         
