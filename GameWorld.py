@@ -1,9 +1,10 @@
 from Window import *
 from Objects import *
 import time
+import sys
 
 
-HEIGHT = WIDTH = 800
+HEIGHT = WIDTH = 500
 LEFT = WIDTH * -0.5
 RIGHT = WIDTH * 0.5
 TOP = HEIGHT * 0.5
@@ -13,8 +14,8 @@ class Game:
     def __init__(self):
 
         self.window = Window(WIDTH, HEIGHT)
-        self.snake = Snake()
-        self.food = Food()
+        self.snake = Snake(WIDTH, HEIGHT)
+        self.food = Food(WIDTH, HEIGHT)
         self.player_score = 0
         self.high_score = 0
 
@@ -27,7 +28,7 @@ class Game:
             self.window.screen.onkey(self.snake.go_right, 'Right')
             self.window.screen.onkey(self.snake.go_left, 'Left')
         except:
-            exit()
+            sys.exit()
 
 
 
@@ -63,11 +64,13 @@ class Game:
         condition4 = self.snake.snake_head.ycor() < BOTTOM
 
         if any((condition1, condition2, condition3, condition4)):
+            self.player_score = 0
             time.sleep(1)
-
+            
             self.snake.snake_die()
 
         if self.snake.head_and_body_coll_check() == True:
+            self.player_score = 0
             time.sleep(1)
             self.snake.snake_die()
 
