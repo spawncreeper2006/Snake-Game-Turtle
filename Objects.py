@@ -2,8 +2,10 @@ import turtle, random
 
 
 class Snake:
-    def __init__(self):
+    def __init__(self, WIDTH, HEIGHT):
 
+        self.WIDTH = WIDTH
+        self.HEIGHT = HEIGHT
 
         self.snake_head = turtle.Turtle()
 
@@ -114,7 +116,9 @@ class Snake:
         
 class Food:
 
-    def __init__(self):
+    def __init__(self, WIDTH, HEIGHT):
+        self.WIDTH = WIDTH
+        self.HEIGHT = HEIGHT
         self.item = turtle.Turtle()
         self.item.speed(0)
         self.item.shape('circle')
@@ -130,8 +134,8 @@ class Food:
 
     def relocate(self):
         if self.move == True:
-            x = random.randint(-390, 390)
-            y = random.randint(-390, 390)
+            x = random.randint(-self.WIDTH//2+10,self.WIDTH//2-10)
+            y = random.randint(-self.HEIGHT//2+10, self.HEIGHT//2-10)
             self.item.goto(x,y)
             self.set_move(False)
 
@@ -154,3 +158,4 @@ class Food:
     def update(self):
         self.relocate()
         
+
